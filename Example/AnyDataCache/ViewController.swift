@@ -9,7 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var noteView: UITextView!
+    @IBOutlet weak var passcodeView: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,6 +23,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func readNote(_ sender: Any) {
+    }
+    
+    
+    @IBAction func saveNote(_ sender: Any) {
+    }
+    
+    
+    @IBAction func clearViews(_ sender: Any) {
+    }
+    
 
 }
 

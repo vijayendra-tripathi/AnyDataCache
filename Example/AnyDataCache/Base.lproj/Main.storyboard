@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +18,112 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your private Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLF-1K-bEf">
+                                <rect key="frame" x="101" y="20" width="173" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sSb-nr-d9p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Note here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GuN-yi-7nZ">
+                                <rect key="frame" x="3" y="70" width="369" height="221.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GuN-yi-7nZ" secondAttribute="height" multiplier="1:0.6" id="edQ-ZU-uTo"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c5s-2o-LxL">
+                                <rect key="frame" x="9.5" y="313.5" width="356" height="220"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2tn-Ee-h44">
+                                        <rect key="frame" x="0.0" y="0.0" width="356" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ci-u4-HUV">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="1Ar-2m-9h4"/>
+                                                    <constraint firstAttribute="height" constant="40" id="IxW-Te-JOb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Used as data key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pjf-od-ipQ">
+                                                <rect key="frame" x="110" y="0.0" width="246" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK1-GR-rOt">
+                                        <rect key="frame" x="0.0" y="50" width="356" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="IgL-0s-wkr"/>
+                                        </constraints>
+                                        <state key="normal" title="Read my note">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="readNote:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TO1-f8-gLt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL4-2s-yws">
+                                        <rect key="frame" x="0.0" y="110" width="356" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hh6-kf-A2c"/>
+                                        </constraints>
+                                        <state key="normal" title="Save my note">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveNote:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vz8-Yt-Joz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pka-RG-KhB">
+                                        <rect key="frame" x="0.0" y="170" width="356" height="50"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2Uz-3C-nJV"/>
+                                        </constraints>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearViews:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XT0-1d-ny8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GuN-yi-7nZ" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.984" id="3xB-9S-VmX"/>
+                            <constraint firstItem="MLF-1K-bEf" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="G5g-DR-asO"/>
+                            <constraint firstItem="c5s-2o-LxL" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.95" id="Ivn-HD-ROb"/>
+                            <constraint firstItem="MLF-1K-bEf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="Qac-ln-lyS"/>
+                            <constraint firstItem="GuN-yi-7nZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="QhO-bH-X0g"/>
+                            <constraint firstItem="GuN-yi-7nZ" firstAttribute="top" secondItem="MLF-1K-bEf" secondAttribute="bottom" constant="10" id="V1T-qy-Gjt"/>
+                            <constraint firstItem="c5s-2o-LxL" firstAttribute="top" secondItem="GuN-yi-7nZ" secondAttribute="bottom" constant="22" id="hNe-bC-K1h"/>
+                            <constraint firstItem="c5s-2o-LxL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="u83-gM-sdm"/>
+                            <constraint firstItem="MLF-1K-bEf" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.461333" id="x6f-9W-l9i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="noteView" destination="GuN-yi-7nZ" id="0PJ-jG-JUx"/>
+                        <outlet property="passcodeView" destination="Pjf-od-ipQ" id="NhV-9z-MkA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

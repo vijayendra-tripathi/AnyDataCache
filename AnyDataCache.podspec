@@ -28,13 +28,13 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/vijayendra-tripathi/AnyDataCache'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'vijayendra-tripathi' => 'vijayendra.t.inbox@gmail.com' }
+  s.author           = { 'Vijayendra Tripathi' => 'vijayendra.t.inbox@gmail.com' }
   s.source           = { :git => 'https://github.com/vijayendra-tripathi/AnyDataCache.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/vijayendra_t'
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'AnyDataCache/Classes/*.swift'
+  s.source_files = 'AnyDataCache/Classes/DataCache/*.swift'
   
   # s.resource_bundles = {
   #   'AnyDataCache' => ['AnyDataCache/Assets/*.png']
@@ -42,5 +42,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'RealmSwift'
+  s.dependency 'RealmSwift', '~> 4.3.1'
 end
