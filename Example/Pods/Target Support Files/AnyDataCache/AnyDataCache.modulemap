@@ -1,0 +1,6 @@
+framework module AnyDataCache {
+  umbrella header "AnyDataCache-umbrella.h"
+
+  export *
+  module * { export * }
+}

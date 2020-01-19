@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AnyDataCache_Example' do
+  pod 'AnyDataCache', :path => '../'
+
+  target 'AnyDataCache_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

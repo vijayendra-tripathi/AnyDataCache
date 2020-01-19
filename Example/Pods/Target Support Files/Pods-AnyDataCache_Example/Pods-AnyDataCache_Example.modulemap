@@ -1,0 +1,6 @@
+framework module Pods_AnyDataCache_Example {
+  umbrella header "Pods-AnyDataCache_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "AnyDataCache",
+  "version": "0.1.0",
+  "summary": "A short description of AnyDataCache.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/vijayendra-tripathi/AnyDataCache",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "vijayendra-tripathi": "vijayendra@baselabs.co"
+  },
+  "source": {
+    "git": "https://github.com/vijayendra-tripathi/AnyDataCache.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "AnyDataCache/Classes/**/*"
+}

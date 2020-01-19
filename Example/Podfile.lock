@@ -1,0 +1,16 @@
+PODS:
+  - AnyDataCache (0.1.0)
+
+DEPENDENCIES:
+  - AnyDataCache (from `../`)
+
+EXTERNAL SOURCES:
+  AnyDataCache:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AnyDataCache: 98aeb2a79b79b039c29184564bc82890b7429e60
+
+PODFILE CHECKSUM: f3f66c30bb958c02a08d0a454b1ef28424d5ab13
+
+COCOAPODS: 1.8.3
