@@ -78,7 +78,7 @@ To follow on Twitter:  [@vijayendra_t](https://twitter.com/vijayendra_t)
 
 # License
 
-PopupDialog is available under the MIT license. See the LICENSE file for more info.
+AnyDataCache is available under the MIT license. See the LICENSE file for more info.
 
 <p>&nbsp;</p>
 
