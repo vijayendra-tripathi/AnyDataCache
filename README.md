@@ -38,21 +38,21 @@
  
  ```swift
  
- DataCache.sharedInstance.addData(dataKey: dataKey, data: yourData)
+ DataCache.sharedInstance.addData(dataKey: dataKey, data: data)
  
  ```
- DataKey can be a URL or things like Social Identity (like facebook graph user id)
- Data is a 'Data' object to be saved.
+ DataKey can be a URL or things like Social Identity (like facebook graph user id). 'data' 
+ is a swift 'Data' object. Additionaly you cal also pass expirey time to this function.
  
  To read back saved data, you can use following code -
  
  ```swift
  
- // Assuming you saved a string as data into DataCache. Response
- // comes back on main thread after a read operation.
+ // if you saved a string as data into DataCache, this how you retrieve it. 
+ // Response comes back on main thread after a read operation completes.
  
- DataCache.sharedInstance.getData(dataKey: dataKey) { [weak self] data in
-     if let messageData = data?.data {
+ DataCache.sharedInstance.getData(dataKey: dataKey) { [weak self] anyData in
+     if let messageData = anyData?.data {
          if let message = String(data: messageData, encoding: .utf8) {
             print("Your saved message is : \(message)")
          }
