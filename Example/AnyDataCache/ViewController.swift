@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AnyDataCache
 
 class ViewController: UIViewController {
     
@@ -25,6 +26,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func readNote(_ sender: Any) {
+        if let dataKey = passcodeView.text {
+            
+        }
     }
     
     
@@ -35,6 +39,12 @@ class ViewController: UIViewController {
     @IBAction func clearViews(_ sender: Any) {
     }
     
+    
+    func showMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.show(alert, sender: nil)
+    }
 
 }
 

@@ -1,15 +1,28 @@
 PODS:
-  - AnyDataCache (0.1.0)
+  - AnyDataCache (0.1.0):
+    - RealmSwift (~> 4.3.1)
+  - Realm (4.3.1):
+    - Realm/Headers (= 4.3.1)
+  - Realm/Headers (4.3.1)
+  - RealmSwift (4.3.1):
+    - Realm (= 4.3.1)
 
 DEPENDENCIES:
   - AnyDataCache (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Realm
+    - RealmSwift
 
 EXTERNAL SOURCES:
   AnyDataCache:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AnyDataCache: 98aeb2a79b79b039c29184564bc82890b7429e60
+  AnyDataCache: 99b1d81d24e12b92eba2b22cd2a1b051dc96e128
+  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
+  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
 
 PODFILE CHECKSUM: f3f66c30bb958c02a08d0a454b1ef28424d5ab13
 

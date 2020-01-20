@@ -9,7 +9,7 @@
     "file": "LICENSE"
   },
   "authors": {
-    "vijayendra-tripathi": "vijayendra.t.inbox@gmail.com"
+    "Vijayendra Tripathi": "vijayendra.t.inbox@gmail.com"
   },
   "source": {
     "git": "https://github.com/vijayendra-tripathi/AnyDataCache.git",
@@ -19,11 +19,13 @@
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": "5.0",
   "source_files": "AnyDataCache/Classes/DataCache/*.swift",
   "frameworks": "UIKit",
   "dependencies": {
     "RealmSwift": [
       "~> 4.3.1"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
