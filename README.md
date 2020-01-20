@@ -42,7 +42,7 @@
  
  ```
  DataKey can be a URL or things like Social Identity (like facebook graph user id). 'data' 
- is a swift 'Data' object. Additionaly you cal also pass expirey time to this function.
+ is a swift 'Data' object. Additionaly you can also pass expiry date, auto delete flag to this function.
  
  To read back saved data, you can use following code -
  
@@ -58,6 +58,14 @@
          }
      }
  }
+ 
+ ```
+ 
+ To set disk usage limit
+ 
+ ```swift
+ 
+ DataCache.sharedInstance.setStorageLimitInMB(20) // 20 MB
  
  ```
  
