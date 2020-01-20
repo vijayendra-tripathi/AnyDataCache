@@ -38,7 +38,12 @@ public class DataCache {
     
     private var storageLimitInBytes: Int = 5 * 1024 * 1024 // 5 MB default limit
     private let cacheFileName = "DataCache.realm"
-    // create a searial queue to perform background operations.
+    /*
+     Create a searial queue to perform background operations. You can also use a
+     concurrent queue but that may increase realm database file substentially. It
+     also reduces compacting opportunities if realm file is accessed by a background
+     thread.
+     */
     private let realmQueue = DispatchQueue(label: "com.datacache.serial")
     private var taskCount = 0 // task counts of serial queue
     
@@ -52,7 +57,7 @@ public class DataCache {
     
     // Notification received on day change
     @objc private func calendarDayDidChange(_ notification : NSNotification) {
-        print("Calendar date changed ...")
+//        print("Calendar date changed ...")
         deleteExpiredItems()
     }
     
@@ -79,7 +84,7 @@ public class DataCache {
     public func deleteExpiredItems() {
         realmQueue.async {
             autoreleasepool {
-                print("Deleting expired items ...")
+//                print("Deleting expired items ...")
                 guard let realm = self.connectRealm() else {
                     print("Sorry, could not connect to realm file.")
                     return
@@ -102,7 +107,7 @@ public class DataCache {
     public func deleteItem(dataKey: String, onCompletion: @escaping () -> Void) {
         realmQueue.async {
             autoreleasepool {
-                print("Deleting specified items ...")
+//                print("Deleting specified items ...")
                 guard let realm = self.connectRealm() else {
                     print("Sorry, could not connect to realm file.")
                     return
@@ -208,7 +213,7 @@ public class DataCache {
                             break
                         }
                     }
-                    print("All tasks completed.")
+//                    print("All tasks completed.")
                 }
                 
                 // Invalidate realm
@@ -226,3 +231,4 @@ public class DataCache {
     }
     
 }
+

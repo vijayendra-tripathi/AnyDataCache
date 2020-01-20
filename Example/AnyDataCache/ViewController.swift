@@ -26,17 +26,43 @@ class ViewController: UIViewController {
     }
     
     @IBAction func readNote(_ sender: Any) {
+        var messageDisplayed = false
         if let dataKey = passcodeView.text {
-            
+            DataCache.sharedInstance.getData(dataKey: dataKey) { [weak self] data in
+                if let messageData = data?.data {
+                    if let message = String(data: messageData, encoding: .utf8) {
+                        self?.noteView.text = message
+                        messageDisplayed = true
+                    }
+                }
+                if !messageDisplayed {
+                    self?.showMessage(title: "Error", message: "No message found for your data key.")
+                }
+            }
         }
     }
     
     
     @IBAction func saveNote(_ sender: Any) {
+        var messageSaved = false
+        if let dataKey = passcodeView.text {
+            if let noteData = noteView.text.data(using: .utf8) {
+                DataCache.sharedInstance.addData(dataKey: dataKey, data: noteData)
+                messageSaved = true
+            }
+        }
+        if messageSaved {
+            showMessage(title: "Yes!", message: "Your message is saved.")
+        }
+        else {
+            showMessage(title: "Error", message: "Sorry message could not be saved.")
+        }
     }
     
     
     @IBAction func clearViews(_ sender: Any) {
+        noteView.text = ""
+        passcodeView.text = ""
     }
     
     
@@ -47,4 +73,5 @@ class ViewController: UIViewController {
     }
 
 }
+
 

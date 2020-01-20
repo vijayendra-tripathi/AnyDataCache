@@ -28,12 +28,12 @@ import RealmSwift
 
 public class AnyData: Object {
     
-    @objc dynamic var dataKey: String = "" // Can be a URL, facebook id etc.
-    @objc dynamic var data: Data? = nil // Any data, typically images, audio, video etc
-    @objc dynamic var updateTime: Date? = nil // Time of creation or update
-    @objc dynamic var autoDelete: Bool = true // No automatic deletion possible unless requested.
-    @objc dynamic var expiryTime: Date? = nil // Automatically deleted after time expires.
-    @objc dynamic var dataSize: Int = 0 // Data size in bytes.
+    @objc dynamic public var dataKey: String = "" // Can be a URL, facebook id etc.
+    @objc dynamic public var data: Data? = nil // Any data, typically images, audio, video etc
+    @objc dynamic public var updateTime: Date? = nil // Time of creation or update
+    @objc dynamic public var autoDelete: Bool = true // No automatic deletion possible unless requested.
+    @objc dynamic public var expiryTime: Date? = nil // Automatically deleted after time expires.
+    @objc dynamic public var dataSize: Int = 0 // Data size in bytes.
     
     override public static func primaryKey() -> String? {
         return "dataKey"
@@ -73,3 +73,4 @@ public class AnyData: Object {
     }
     
 }
+
