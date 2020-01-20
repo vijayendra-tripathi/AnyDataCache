@@ -1,5 +1,5 @@
 
-<img src="https://github.com/vijayendra-tripathi/AnyDataCache/blob/master/Assets/AnyDataCache.jpg?raw=true" width="600">
+<img src="https://github.com/vijayendra-tripathi/AnyDataCache/blob/master/Assets/AnyDataCacheLogo.jpg?raw=true" width="600">
 
 <p>&nbsp;</p>
 
