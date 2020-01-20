@@ -1,15 +1,32 @@
 //
-//  CachedData.swift
-//  RealmTest
+//    CachedData.swift
+//    AnyDataCache
 //
-//  Created by Vijayendra Tripathi on 15/01/20.
-//  Copyright © 2020 Vijayendra Tripathi. All rights reserved.
+//    Copyright (c) 2020 Vijayendra Tripathi
+
+//    Permission is hereby granted, free of charge, to any person obtaining a copy
+//    of this software and associated documentation files (the "Software"), to deal
+//    in the Software without restriction, including without limitation the rights
+//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//    copies of the Software, and to permit persons to whom the Software is
+//    furnished to do so, subject to the following conditions:
+//
+//    The above copyright notice and this permission notice shall be included in all
+//    copies or substantial portions of the Software.
+//
+//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//    SOFTWARE.
 //
 
 import Foundation
 import RealmSwift
 
-class AnyData: Object {
+public class AnyData: Object {
     
     @objc dynamic var dataKey: String = "" // Can be a URL, facebook id etc.
     @objc dynamic var data: Data? = nil // Any data, typically images, audio, video etc
@@ -18,7 +35,7 @@ class AnyData: Object {
     @objc dynamic var expiryTime: Date? = nil // Automatically deleted after time expires.
     @objc dynamic var dataSize: Int = 0 // Data size in bytes.
     
-    override static func primaryKey() -> String? {
+    override public static func primaryKey() -> String? {
         return "dataKey"
     }
     
