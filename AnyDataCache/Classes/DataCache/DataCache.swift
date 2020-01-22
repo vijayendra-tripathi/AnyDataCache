@@ -104,12 +104,15 @@ public class DataCache {
         }
     }
     
-    public func deleteItem(dataKey: String, onCompletion: @escaping () -> Void) {
+    public func deleteItem(dataKey: String, onCompletion: @escaping (Bool) -> Void) {
         realmQueue.async {
             autoreleasepool {
 //                print("Deleting specified items ...")
                 guard let realm = self.connectRealm() else {
                     print("Sorry, could not connect to realm file.")
+                    DispatchQueue.main.async {
+                        onCompletion(false)
+                    }
                     return
                 }
             
@@ -118,7 +121,7 @@ public class DataCache {
                     if items.count > 0 {
                         realm.delete(items)
                         DispatchQueue.main.async {
-                            onCompletion()
+                            onCompletion(true)
                         }
                     }
                 }
@@ -149,6 +152,9 @@ public class DataCache {
         realmQueue.async {
             autoreleasepool {
                 guard let realm = self.connectRealm() else {
+                    DispatchQueue.main.async {
+                        onFetch(nil)
+                    }
                     return
                 }
                 
