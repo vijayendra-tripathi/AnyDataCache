@@ -92,10 +92,17 @@ public class DataCache {
                 
                 let today = Date()
                 let items = realm.objects(AnyData.self).filter("autoDelete == true AND expiryTime < %@", today)
-                try! realm.write {
-                    if items.count > 0 {
-                        realm.delete(items)
+                
+                do {
+                    try realm.write {
+                        if items.count > 0 {
+                            realm.delete(items)
+                        }
                     }
+                }
+                catch {
+                    // You might want to log this.
+                    print("Can't delete expired item.")
                 }
                 
                 // Invalidate realm
@@ -117,12 +124,20 @@ public class DataCache {
                 }
             
                 let items = realm.objects(AnyData.self).filter("dataKey == %@", dataKey)
-                try! realm.write {
-                    if items.count > 0 {
-                        realm.delete(items)
-                        DispatchQueue.main.async {
-                            onCompletion(true)
+                do {
+                    try realm.write {
+                        if items.count > 0 {
+                            realm.delete(items)
+                            DispatchQueue.main.async {
+                                onCompletion(true)
+                            }
                         }
+                    }
+                }
+                catch {
+                    print("Deletion failed for key: \(dataKey)")
+                    DispatchQueue.main.async {
+                        onCompletion(false)
                     }
                 }
                 
@@ -159,15 +174,9 @@ public class DataCache {
                 }
                 
                 let cachedData = realm.object(ofType: (AnyData.self), forPrimaryKey: dataKey)
-                if let anyData = cachedData?.getStatelessCopy() {
-                    DispatchQueue.main.async {
-                        onFetch(anyData)
-                    }
-                }
-                else {
-                    DispatchQueue.main.async {
-                        onFetch(nil)
-                    }
+                let anyData = cachedData?.getStatelessCopy()
+                DispatchQueue.main.async {
+                    onFetch(anyData)
                 }
                 
                 // Invalidate realm
@@ -182,11 +191,14 @@ public class DataCache {
      if total data size (of auto delete objects) exceeds 'storeageLimitInMB'. This
      computation is also expensive and so we do all these in background serial queue.
      */
-    public func addData(dataKey: String, data: Data, expiryTime: Date? = nil, autoDelete: Bool = true) {
+    public func addData(dataKey: String, data: Data, expiryTime: Date? = nil, autoDelete: Bool = true, onAdd: @escaping (Bool) -> Void) {
         self.taskCount += 1
         realmQueue.async {
             autoreleasepool {
                 guard let realm = self.connectRealm() else {
+                    DispatchQueue.main.async {
+                        onAdd(false)
+                    }
                     return
                 }
                 
@@ -197,8 +209,16 @@ public class DataCache {
                 cachedData.updateTime = Date()
                 cachedData.expiryTime = expiryTime
                 cachedData.dataSize = data.count
-                try! realm.write {
-                    realm.create(AnyData.self, value: cachedData, update: .all)
+                do {
+                    try realm.write {
+                        realm.create(AnyData.self, value: cachedData, update: .all)
+                    }
+                }
+                catch {
+                    DispatchQueue.main.async {
+                        onAdd(false)
+                    }
+                    return
                 }
                 
                 self.taskCount -= 1
@@ -210,9 +230,14 @@ public class DataCache {
 
                         // If exceeding then delete oldest object
                         if let oldestObject = collectionResult.first {
-                            try! realm.write {
-                                //print("Deleting object: \(oldestObject.dataKey)")
-                                realm.delete(oldestObject)
+                            do {
+                                try realm.write {
+                                    //print("Deleting object: \(oldestObject.dataKey)")
+                                    realm.delete(oldestObject)
+                                }
+                            }
+                            catch {
+                                print("Failed to delte old item with key: \(oldestObject.dataKey)")
                             }
                         }
                         else {
@@ -220,6 +245,10 @@ public class DataCache {
                         }
                     }
 //                    print("All tasks completed.")
+                }
+                
+                DispatchQueue.main.async {
+                    onAdd(true)
                 }
                 
                 // Invalidate realm
