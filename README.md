@@ -17,7 +17,7 @@
  - [x] Set expiry time and framework will automatically delete data after expiry time.
  - [x] Set disk usage limit and framework will automatically delete old files.
  - [x] Set auto delete property to let framework delete a data only on your instruction.
- - [x] Works on all screens and devices supporting iOS 10.0+
+ - [x] Works on devices supporting iOS 10.0+
  
  ## CocoaPods
 
@@ -49,8 +49,8 @@
  
  ```swift
  
- // if you saved a string as data into DataCache, this is how you retrieve it. 
- // Response comes back on main thread after read operation completes.
+ // if you saved a string as data into DataCache, then this is how you retrieve it. 
+ // Response comes back on main thread after read operation completes on background thread.
  
  DataCache.sharedInstance.getData(dataKey: dataKey) { [weak self] anyData in
      if let messageData = anyData?.data {
