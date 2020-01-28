@@ -38,18 +38,19 @@
  
  ```swift
  
- DataCache.sharedInstance.addData(dataKey: dataKey, data: data)
+ DataCache.sharedInstance.addData(dataKey: dataKey, data: data, expiryDate: someDateorNil, autoDelete: true, onAdd: nil)
  
  ```
- DataKey can be a URL or things like Social Identity (like facebook graph user id). 'data' 
- is a swift 'Data' object. Additionaly you can also pass expiry date, auto delete flag to this function.
+ DataKey can be a URL or things like Social Identity (like facebook graph user id). 'N' 
+ is a swift 'Data' object. Additionaly you can also pass optional args like expiry date, auto delete flag, on task finish closure to this function.
+ 
  
  To read back saved data, you can use following code -
  
  ```swift
  
- // if you saved a string as data into DataCache, this how you retrieve it. 
- // Response comes back on main thread after a read operation completes.
+ // if you saved a string as data into DataCache, this is how you retrieve it. 
+ // Response comes back on main thread after read operation completes.
  
  DataCache.sharedInstance.getData(dataKey: dataKey) { [weak self] anyData in
      if let messageData = anyData?.data {
@@ -71,7 +72,7 @@
  
  # Author
 
-Vijayendra Tripathi, vijayendra.t.inbox@gmail.com
+Vijayendra Tripathi, Founder @ Baselabs LLP
 To follow on Twitter:  [@vijayendra_t](https://twitter.com/vijayendra_t)
 
 <p>&nbsp;</p>
